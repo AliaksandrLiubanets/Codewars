@@ -21,7 +21,6 @@ let isAnagram = function(test, original) {
     return true;
   } else {
     return false;
-  }
-  
+  }  
  
 };
