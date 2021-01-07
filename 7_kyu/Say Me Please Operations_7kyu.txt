@@ -1,0 +1,54 @@
+Task:
+You have a string of numbers; starting with the third number each number is the result of an operation performed using the previous two numbers.
+Complete the function which returns a string of the operations in order and separated by a comma and a space, e.g. 
+"subtraction, subtraction, addition"
+The available operations are (in this order of preference):
+1) addition
+2) subtraction
+3) multiplication
+4) division
+
+Notes:
+All input data is valid
+The number of numbers in the input string >= 3
+For a case like "2 2 4" - when multiple variants are possible - choose the first possible operation from the list (in this case "addition")
+Integer division should be used
+
+Example:
+"9 4 5 20 25"  -->  "subtraction, multiplication, addition"
+
+Becouse:
+9 - 4 = 5   --> subtraction
+4 * 5 = 20  --> multiplication
+5 + 20 = 25 --> addition
+
+
+Solution:
+
+function sayMeOperations (str) {
+  str = str.split(" ");
+  let answer = "";
+
+  for(i = 0; i < str.length - 2; i++) {
+
+    let addition = Number(str[i]) + Number(str[i + 1]);
+    let subtract = Number(str[i]) - Number(str[i + 1]);
+    let multipl = Number(str[i]) * Number(str[i + 1]);
+    let division = Math.trunc(Number(str[i]) / Number(str[i + 1]));
+
+    if(addition === Number(str[i + 2])) {
+      answer += 'addition ' ;
+    } else if(multipl === Number(str[i + 2])) {
+      answer += 'multiplication ';
+    } else if(subtract === Number(str[i + 2])) {
+      answer += 'subtraction ';
+    } else if(division === Number(str[i + 2])) {
+      answer += 'division ';
+    }
+  }
+
+  answer = answer.split(' ');
+  answer.pop();
+  return answer.join(', ');
+
+};
