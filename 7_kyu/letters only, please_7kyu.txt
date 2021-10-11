@@ -15,15 +15,4 @@ removeChars("0123456789(.)+,|[]{}=@/~;^$'<>?-!*&:#%_")  ==> '' (empty string)
 
 Solution:
 
-let isAnagram = function(test, original) {
-  if(original.length !== test.length) {
-    return false;
-  }
-
-  if(test.toLowerCase().split('').sort().join('') === original.toLowerCase().split('').sort().join('')) {
-    return true;
-  } else {
-    return false;
-  }  
- 
-};
+const removeChars = s => s.replace(/[^a-z ]+/ig, '')
