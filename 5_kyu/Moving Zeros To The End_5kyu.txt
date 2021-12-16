@@ -1,0 +1,25 @@
+Task:
+
+Write an algorithm that takes an array and moves all of the zeros to the end, preserving the order of the other elements.
+
+Examples:
+moveZeros([false,1,0,1,2,0,1,3,"a"]) // returns[false,1,1,2,1,3,"a",0,0]
+
+
+Solution:
+
+const moveZeros = (arr) => {
+  
+ const zerosArr = []
+ 
+ const handler = (array) => array.splice(array.indexOf(0),1)
+ 
+ arr.forEach(el => {
+   if(arr.includes(0)) {
+      handler(arr)
+      zerosArr.push(0)
+    }
+ })  
+ 
+  return [...arr, ...zerosArr]
+}
